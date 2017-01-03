@@ -44,8 +44,8 @@ public class CheckPlanActivity extends BaseActivity {
         adapter.addItemClickListener(new OnRecyclerViewListener() {
             @Override
             public void onItemClickListener(int position) {
-//                Intent smartIntent=new Intent(getActivity(), SmartCheck_NFCActivity.class);
-                Intent smartIntent=new Intent(CheckPlanActivity.this, SmartCheck_GPSActivity.class);
+                Intent smartIntent=new Intent(CheckPlanActivity.this, SmartCheck_NFCActivity.class);
+//                Intent smartIntent=new Intent(CheckPlanActivity.this, SmartCheck_GPSActivity.class);
                 startActivity(smartIntent);
                 overridePendingTransition(R.anim.in_from_right,R.anim.out_from_left);
 
