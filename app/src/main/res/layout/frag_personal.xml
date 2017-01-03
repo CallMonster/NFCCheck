@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_top" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white">
+
+        <com.tj.chaersi.nfccheck.widget.CircleImageView
+            android:id="@+id/userLogo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:src="@mipmap/ic_default_logo"
+            app:border_color="@color/white"
+            app:border_width="1dp" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/userLogo"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/userLogo"
+            android:text="我是用户名"
+            android:textColor="@color/text_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/companyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/userLogo"
+            android:text="华北油田第四勘测研究分院"
+            android:textColor="@color/text_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/className"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/companyName"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/userLogo"
+            android:text="我是类名"
+            android:textColor="@color/text_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/workName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/companyName"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/className"
+            android:text="我是职务名称"
+            android:textColor="@color/text_black"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@mipmap/ic_arrow_right"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_color" />
+
+    <com.tj.chaersi.nfccheck.widget.ListViewShowView
+        android:id="@+id/personalItemView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/line_color"
+        android:dividerHeight="1px"
+        android:fadingEdge="none"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:listSelector="#00000000"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+</LinearLayout>

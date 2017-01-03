@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--&#160; 空格-->
+    <string-array name="personalTitleArr">
+        <item>修改密码</item>
+        <item>版本更新</item>
+        <item>退出登录</item>
+    </string-array>
+
+    <string-array name="indexTitleArr">
+        <item>居民巡检</item>
+        <item>故障上报</item>
+        <item>故障待办</item>
+        <item>智能巡检</item>
+    </string-array>
+
+    <string-array name="errAreaArr">
+        <item>&#160;全部消息</item>
+        <item>&#160;支付中心</item>
+        <item>&#160;系统消息</item>
+        <item>&#160;活动通知</item>
+    </string-array>
+</resources>

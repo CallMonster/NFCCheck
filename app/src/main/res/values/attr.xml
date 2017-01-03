@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="shadow_icon" format="reference"></attr>
+    <attr name="shadow_color" format="color"></attr>
+    <attr name="shadow_text" format="string"></attr>
+    <attr name="shadow_text_size" format="dimension"></attr>
+
+    <declare-styleable name="ChangeColorIconWithText">
+        <attr name="shadow_icon"></attr>
+        <attr name="shadow_color"></attr>
+        <attr name="shadow_text"></attr>
+        <attr name="shadow_text_size"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+
+</resources>

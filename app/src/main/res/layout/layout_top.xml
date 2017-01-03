@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/leftView"
+        android:layout_width="11dp"
+        android:layout_height="18dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:src="@mipmap/ic_btn_back" />
+
+    <View
+        android:id="@+id/leftBtn"
+        android:layout_width="80dp"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/text_black"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/rightView"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="完成"
+        android:textColor="@color/text_black"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/rightBtn_img"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible"/>
+
+    <View
+        android:id="@+id/rightBtn"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/line_color" />
+
+</RelativeLayout>
