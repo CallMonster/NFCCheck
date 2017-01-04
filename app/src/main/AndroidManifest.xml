@@ -3,6 +3,7 @@
     package="com.tj.chaersi.nfccheck">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
@@ -19,12 +20,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ResidentCheckActivity" />
-        <activity android:name=".activity.ErrorUploadActivity" />
-        <activity android:name=".activity.ErrorProcessActivity" />
-        <activity android:name=".activity.SmartCheck_NFCActivity" />
-        <activity android:name=".activity.SmartCheck_GPSActivity" />
-        <activity android:name=".activity.CheckPlanActivity"></activity>
+        <activity
+            android:name=".activity.ResidentCheckActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ErrorUploadActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ErrorProcessActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SmartCheck_NFCActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
+        </activity>
+        <activity
+            android:name=".activity.SmartCheck_GPSActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CheckPlanActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

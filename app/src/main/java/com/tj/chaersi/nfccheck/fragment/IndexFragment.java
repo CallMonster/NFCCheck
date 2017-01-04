@@ -52,10 +52,7 @@ public class IndexFragment extends BaseFragment {
             public void onItemClickListener(int position) {
                 switch (position){
                     case 0:
-//                        Intent residentIntent=new Intent(getActivity(), ResidentCheckActivity.class);
-//                        startActivity(residentIntent);
-//                        getActivity().overridePendingTransition(R.anim.in_from_right,R.anim.out_from_left);
-                        Intent residentIntent=new Intent(getActivity(), CheckPlanActivity.class);
+                        Intent residentIntent=new Intent(getActivity(), ResidentCheckActivity.class);
                         startActivity(residentIntent);
                         getActivity().overridePendingTransition(R.anim.in_from_right,R.anim.out_from_left);
                         break;

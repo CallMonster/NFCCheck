@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NFCCheck</string>
+    <string name="no_nfc">该设备不支持NFC</string>
+    <string name="open_nfc">NFC功能没打开，请打开</string>
 </resources>
