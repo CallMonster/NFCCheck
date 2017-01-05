@@ -14,13 +14,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tj.chaersi.nfccheck.R;
+import com.tj.chaersi.nfccheck.Utils.HttpsUtils;
 import com.tj.chaersi.nfccheck.adapter.CheckPointAdapter;
 import com.tj.chaersi.nfccheck.base.BaseActivity;
+import com.tj.chaersi.nfccheck.base.BaseApplication;
 import com.tj.chaersi.nfccheck.impl.OnRecyclerViewListener;
 import com.tj.chaersi.nfccheck.widget.DividerDecoration;
 
@@ -30,10 +33,13 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.tj.chaersi.nfccheck.Utils.HttpsUtils.*;
+
 /**
  * 智能巡检_nfc
  */
 public class SmartCheck_NFCActivity extends BaseActivity {
+    private String TAG="SmartCheck_NFCActivity";
 
     @BindView(R.id.title) TextView titleView;
     @BindView(R.id.leftBtn) View leftBtn;
@@ -123,10 +129,13 @@ public class SmartCheck_NFCActivity extends BaseActivity {
         return itemArr;
     }
 
+    /** NFC读取功能 */
     @Override
     protected void onResume() {
         super.onResume();
-        nfcAdapter.enableForegroundDispatch(this, pendingIntent, mFilters, mTechLists);
+        if(nfcAdapter!=null){
+            nfcAdapter.enableForegroundDispatch(this, pendingIntent, mFilters, mTechLists);
+        }
         if (isFirst) {
             if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(getIntent().getAction())) {
                 String result = processIntent(getIntent());

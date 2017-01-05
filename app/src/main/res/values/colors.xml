@@ -13,5 +13,7 @@
     <color name="background_grey">#f3f5f9</color>
 
     <color name="bg_theme_color">#00a0e9</color>
+    <color name="c_teawhite">#f6f8f5</color><!--茶白 -->
+    <color name="c_crow">#434b4f</color><!--鸦黑 -->
 
 </resources>

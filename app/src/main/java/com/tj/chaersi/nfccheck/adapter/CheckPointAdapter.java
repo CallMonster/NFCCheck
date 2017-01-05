@@ -1,6 +1,8 @@
 package com.tj.chaersi.nfccheck.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,9 +24,14 @@ public class CheckPointAdapter extends RecyclerView.Adapter<CheckPointAdapter.It
 
     private Context context;
     private ArrayList<HashMap<String,String>> arr;
+    private HashMap<Integer,Boolean> isChoosed;
     public CheckPointAdapter(Context context,ArrayList<HashMap<String,String>> arr) {
         this.context = context;
         this.arr=arr;
+        isChoosed=new HashMap<>();
+        for(int i=0;i<arr.size();i++){
+            isChoosed.put(i,false);
+        }
     }
 
     @Override
@@ -41,6 +48,38 @@ public class CheckPointAdapter extends RecyclerView.Adapter<CheckPointAdapter.It
         holder.checkTime.setText(arr.get(position).get("time"));
         holder.checkWorker.setText(arr.get(position).get("worker"));
         holder.position=position;
+        if(isChoosed.get(position)){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                holder.parentlayout.setBackgroundColor(context.getResources().getColor(R.color.c_crow,null));
+                holder.serialView.setTextColor(context.getResources().getColor(R.color.c_teawhite,null));
+                holder.pointName.setTextColor(context.getResources().getColor(R.color.c_teawhite,null));
+                holder.checkState.setTextColor(context.getResources().getColor(R.color.c_teawhite,null));
+                holder.checkTime.setTextColor(context.getResources().getColor(R.color.c_teawhite,null));
+                holder.checkWorker.setTextColor(context.getResources().getColor(R.color.c_teawhite,null));
+            }else{
+                holder.parentlayout.setBackgroundColor(context.getResources().getColor(R.color.c_crow));
+                holder.serialView.setTextColor(context.getResources().getColor(R.color.c_teawhite));
+                holder.pointName.setTextColor(context.getResources().getColor(R.color.c_teawhite));
+                holder.checkState.setTextColor(context.getResources().getColor(R.color.c_teawhite));
+                holder.checkTime.setTextColor(context.getResources().getColor(R.color.c_teawhite));
+                holder.checkWorker.setTextColor(context.getResources().getColor(R.color.c_teawhite));
+            }
+        }else{
+            holder.parentlayout.setBackgroundColor(Color.WHITE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                holder.serialView.setTextColor(context.getResources().getColor(R.color.text_grey,null));
+                holder.pointName.setTextColor(context.getResources().getColor(R.color.text_grey,null));
+                holder.checkState.setTextColor(context.getResources().getColor(R.color.text_grey,null));
+                holder.checkTime.setTextColor(context.getResources().getColor(R.color.text_grey,null));
+                holder.checkWorker.setTextColor(context.getResources().getColor(R.color.text_grey,null));
+            }else{
+                holder.serialView.setTextColor(context.getResources().getColor(R.color.text_grey));
+                holder.pointName.setTextColor(context.getResources().getColor(R.color.text_grey));
+                holder.checkState.setTextColor(context.getResources().getColor(R.color.text_grey));
+                holder.checkTime.setTextColor(context.getResources().getColor(R.color.text_grey));
+                holder.checkWorker.setTextColor(context.getResources().getColor(R.color.text_grey));
+            }
+        }
     }
 
     @Override
@@ -70,10 +109,23 @@ public class CheckPointAdapter extends RecyclerView.Adapter<CheckPointAdapter.It
             }
             switch (v.getId()){
                 case R.id.parentLayout:
+                    resetChooseItem(position);
                     listener.onItemClickListener(position);
                     break;
             }
         }
+    }
+
+    /**
+     * 重置item选择效果
+     * @param position
+     */
+    private void resetChooseItem(int position){
+        for(int i=0;i<arr.size();i++){
+            isChoosed.put(i,false);
+        }
+        isChoosed.put(position,true);
+        this.notifyDataSetChanged();
     }
 
     public static OnRecyclerViewListener listener;
