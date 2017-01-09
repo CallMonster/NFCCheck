@@ -17,13 +17,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tj.chaersi.nfccheck.R;
-import com.tj.chaersi.nfccheck.Utils.HttpsUtils;
 import com.tj.chaersi.nfccheck.adapter.CheckPointAdapter;
 import com.tj.chaersi.nfccheck.base.BaseActivity;
-import com.tj.chaersi.nfccheck.base.BaseApplication;
 import com.tj.chaersi.nfccheck.impl.OnRecyclerViewListener;
 import com.tj.chaersi.nfccheck.widget.DividerDecoration;
 
@@ -32,8 +29,6 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.tj.chaersi.nfccheck.Utils.HttpsUtils.*;
 
 /**
  * 智能巡检_nfc
