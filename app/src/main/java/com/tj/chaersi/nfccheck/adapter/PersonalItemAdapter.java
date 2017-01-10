@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tj.chaersi.nfccheck.R;
+import com.tj.chaersi.nfccheck.base.BaseApplication;
 
 /**
  * Created by Chaersi on 16/12/26.
@@ -60,7 +61,11 @@ public class PersonalItemAdapter extends BaseAdapter {
 
         holder.itemIcon.setImageResource(tagImgArr[position]);
         holder.itemName.setText(titleArr[position]);
-
+        if(position==1){
+            holder.versionName.setText("版本："+BaseApplication.instance.checkAppVersion());
+        }else{
+            holder.versionName.setText("");
+        }
         return convertView;
     }
 

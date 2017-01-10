@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tj.chaersi.nfccheck.R;
+import com.tj.chaersi.nfccheck.Utils.PreferenceUtils;
 import com.tj.chaersi.nfccheck.adapter.PersonalItemAdapter;
 import com.tj.chaersi.nfccheck.base.BaseFragment;
 import com.tj.chaersi.nfccheck.widget.ListViewShowView;
@@ -29,17 +30,25 @@ public class PersonalFragment extends BaseFragment {
 
     public PersonalFragment(){}
 
+    private PreferenceUtils preference;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.frag_personal, null);
         ButterKnife.bind(this, view);
+        preference=new PreferenceUtils(getActivity());
 
         PersonalItemAdapter adapter=new PersonalItemAdapter(getActivity());
         personalItemView.setAdapter(adapter);
 
+
+
         titleView.setText("个人中心");
         leftView.setVisibility(View.INVISIBLE);
         leftBtn.setVisibility(View.INVISIBLE);
+
+        username.setText(preference.getUserInfo().getRealname());
+        className.setText(preference.getUserInfo().getStation());
+        workName.setText(preference.getUserInfo().getIntro());
         return view;
     }
 
