@@ -27,6 +27,8 @@ public class BaseApplication extends Application {
 
     public static BaseApplication instance;
     public static Gson gson;
+
+    public String user_id;
     @Override
     public void onCreate() {
         super.onCreate();

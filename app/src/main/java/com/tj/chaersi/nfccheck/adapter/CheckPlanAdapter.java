@@ -11,9 +11,11 @@ import android.widget.TextView;
 import com.tj.chaersi.nfccheck.R;
 import com.tj.chaersi.nfccheck.Utils.OnClickUtils;
 import com.tj.chaersi.nfccheck.impl.OnRecyclerViewListener;
+import com.tj.chaersi.nfccheck.vo.CheckPlanModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Chaersi on 16/12/29.
@@ -21,10 +23,10 @@ import java.util.HashMap;
 public class CheckPlanAdapter extends RecyclerView.Adapter<CheckPlanAdapter.ItemViewHolder> {
 
     private Context context;
-    private ArrayList<HashMap<String, String>> planArr;
-    public CheckPlanAdapter(Context context,ArrayList<HashMap<String, String>> planArr){
+    private List<CheckPlanModel.ListBean> checkArr;
+    public CheckPlanAdapter(Context context,List<CheckPlanModel.ListBean> checkArr){
         this.context=context;
-        this.planArr=planArr;
+        this.checkArr=checkArr;
     }
 
     @Override
@@ -36,12 +38,12 @@ public class CheckPlanAdapter extends RecyclerView.Adapter<CheckPlanAdapter.Item
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         holder.position=position;
-        holder.planPointName.setText(planArr.get(position).get("name"));
+        holder.planPointName.setText(checkArr.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return planArr.size();
+        return checkArr.size();
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

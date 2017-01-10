@@ -94,7 +94,9 @@ public class LoginActivity extends BaseActivity {
                     LoginModel login=BaseApplication.gson.fromJson(response, LoginModel.class);
 
                     if("1".equals(login.getStatecode())){//正确的时候
+                        login.getList().setPassword(password);
                         preference.saveUserInfo(login);
+                        BaseApplication.instance.user_id=login.getList().getId();
                         Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                         startActivity(intent);
                         finish();
