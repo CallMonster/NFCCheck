@@ -65,6 +65,7 @@ public class CheckPlanActivity extends BaseActivity {
             public void onItemClickListener(int position) {
                 if ("1".equals(checkArr.get(position).getChecktype())) {
                     Intent smartNFCIntent = new Intent(CheckPlanActivity.this, SmartCheck_NFCActivity.class);
+                    smartNFCIntent.putExtra("detail_id",checkArr.get(position).getId());
                     startActivity(smartNFCIntent);
                     overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
                 } else {

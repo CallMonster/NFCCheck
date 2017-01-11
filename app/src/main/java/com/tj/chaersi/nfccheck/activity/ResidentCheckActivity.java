@@ -35,7 +35,7 @@ public class ResidentCheckActivity extends BaseActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         checkpointView.setLayoutManager(layoutManager);
         checkpointView.addItemDecoration(new DividerDecoration(this));
-        CheckPointAdapter adapter=new CheckPointAdapter(this,getCheckPointArr());
+        CheckPointAdapter adapter=new CheckPointAdapter(this,null);
         checkpointView.setAdapter(adapter);
 
         adapter.addItemClickListener(new OnRecyclerViewListener() {
