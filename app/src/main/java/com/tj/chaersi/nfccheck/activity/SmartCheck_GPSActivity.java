@@ -98,7 +98,7 @@ public class SmartCheck_GPSActivity extends BaseActivity {
                 .build().execute(new StringCallback() {
 
             @Override
-            public void onBefore(Request request, int id) {
+            public void onAfter(int id) {
                 hideProgressDialog();
             }
 
