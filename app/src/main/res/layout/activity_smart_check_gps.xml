@@ -15,9 +15,11 @@
         android:background="@color/background_grey" />
 
     <LinearLayout
+        android:id="@+id/topBtnLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:visibility="gone"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -105,12 +107,16 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/middleLine1"
         android:layout_width="match_parent"
         android:layout_height="1px"
+        android:visibility="gone"
         android:layout_marginTop="10dp"
         android:background="@color/background_grey" />
 
     <LinearLayout
+        android:id="@+id/middleLayout"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -160,9 +166,11 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/middleLine2"
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_marginBottom="2dp"
+        android:visibility="gone"
         android:layout_marginTop="2dp"
         android:background="@color/background_grey" />
 
@@ -173,5 +181,31 @@
         android:layout_weight="1"
         android:cacheColorHint="#00000000"
         android:fadingEdge="none"
+        android:visibility="gone"
         android:overScrollMode="never" />
+
+    <LinearLayout
+        android:id="@+id/reloadLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="visible"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="20dp"
+            android:alpha="0.5"
+            android:src="@mipmap/empty" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:text="轻触重新加载"
+            android:textColor="@color/text_black"
+            android:textSize="20sp" />
+    </LinearLayout>
 </LinearLayout>

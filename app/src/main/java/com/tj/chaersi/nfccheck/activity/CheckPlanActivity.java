@@ -63,12 +63,13 @@ public class CheckPlanActivity extends BaseActivity {
         adapter.addItemClickListener(new OnRecyclerViewListener() {
             @Override
             public void onItemClickListener(int position) {
-                if ("0".equals(checkArr.get(position).getChecktype())) {
+                if ("1".equals(checkArr.get(position).getChecktype())) {
                     Intent smartNFCIntent = new Intent(CheckPlanActivity.this, SmartCheck_NFCActivity.class);
                     startActivity(smartNFCIntent);
                     overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
                 } else {
                     Intent smartGPGIntent = new Intent(CheckPlanActivity.this, SmartCheck_GPSActivity.class);
+                    smartGPGIntent.putExtra("detail_id",checkArr.get(position).getId());
                     startActivity(smartGPGIntent);
                     overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
                 }

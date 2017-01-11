@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tj.chaersi.nfccheck.R;
+import com.tj.chaersi.nfccheck.Utils.DateUtils;
 import com.tj.chaersi.nfccheck.Utils.OnClickUtils;
 import com.tj.chaersi.nfccheck.impl.OnRecyclerViewListener;
+import com.tj.chaersi.nfccheck.vo.CheckPointModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Chaersi on 16/12/27.
@@ -23,13 +27,13 @@ import java.util.HashMap;
 public class CheckPointAdapter extends RecyclerView.Adapter<CheckPointAdapter.ItemViewHolder>{
 
     private Context context;
-    private ArrayList<HashMap<String,String>> arr;
+    private ArrayList<CheckPointModel.ListBean> pointArr;
     private HashMap<Integer,Boolean> isChoosed;
-    public CheckPointAdapter(Context context,ArrayList<HashMap<String,String>> arr) {
+    public CheckPointAdapter(Context context,ArrayList<CheckPointModel.ListBean> pointArr) {
         this.context = context;
-        this.arr=arr;
+        this.pointArr=pointArr;
         isChoosed=new HashMap<>();
-        for(int i=0;i<arr.size();i++){
+        for(int i=0;i<pointArr.size();i++){
             isChoosed.put(i,false);
         }
     }
@@ -42,11 +46,12 @@ public class CheckPointAdapter extends RecyclerView.Adapter<CheckPointAdapter.It
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        holder.serialView.setText(arr.get(position).get("serial"));
-        holder.pointName.setText(arr.get(position).get("name"));
-        holder.checkState.setText(arr.get(position).get("state").equals("1")?"已巡检":"未巡检");
-        holder.checkTime.setText(arr.get(position).get("time"));
-        holder.checkWorker.setText(arr.get(position).get("worker"));
+        CheckPointModel.ListBean item=pointArr.get(position);
+        holder.serialView.setText((position+1)+"");
+        holder.pointName.setText(TextUtils.isEmpty(item.getName())?"-":item.getName());
+        holder.checkState.setText(TextUtils.isEmpty(item.getState())?"-":item.getState());
+        holder.checkTime.setText(DateUtils.convertDate(item.getCreateDate()));
+        holder.checkWorker.setText(TextUtils.isEmpty(item.getUsername())?"-":item.getUsername());
         holder.position=position;
         if(isChoosed.get(position)){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -84,7 +89,7 @@ public class CheckPointAdapter extends RecyclerView.Adapter<CheckPointAdapter.It
 
     @Override
     public int getItemCount() {
-        return arr.size();
+        return pointArr.size();
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -121,10 +126,22 @@ public class CheckPointAdapter extends RecyclerView.Adapter<CheckPointAdapter.It
      * @param position
      */
     private void resetChooseItem(int position){
-        for(int i=0;i<arr.size();i++){
+        for(int i=0;i<pointArr.size();i++){
             isChoosed.put(i,false);
         }
         isChoosed.put(position,true);
+        this.notifyDataSetChanged();
+    }
+
+    /**
+     * 重置选择按钮
+     * @param pointArr
+     */
+    public void notifyItemChoosed(List<CheckPointModel.ListBean> pointArr){
+        this.pointArr.addAll(pointArr);
+        for(int i=0;i<pointArr.size();i++){
+            isChoosed.put(i,false);
+        }
         this.notifyDataSetChanged();
     }
 
