@@ -12,6 +12,7 @@ import android.nfc.tech.NfcA;
 import android.os.Parcelable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -22,6 +23,7 @@ import com.tj.chaersi.nfccheck.adapter.CheckPointAdapter;
 import com.tj.chaersi.nfccheck.base.BaseActivity;
 import com.tj.chaersi.nfccheck.base.BaseApplication;
 import com.tj.chaersi.nfccheck.base.BaseConfigValue;
+import com.tj.chaersi.nfccheck.db.Dao.NFCCheckPointDao;
 import com.tj.chaersi.nfccheck.impl.OnRecyclerViewListener;
 import com.tj.chaersi.nfccheck.vo.CheckPointModel;
 import com.tj.chaersi.nfccheck.widget.DividerDecoration;
@@ -60,7 +62,7 @@ public class SmartCheck_NFCActivity extends BaseActivity {
     private ArrayList<CheckPointModel.ListBean> pointArr;
     private CheckPointAdapter adapter;
     private String checkid;
-
+    private NFCCheckPointDao pointDao;
     @Override
     public void onCreate() {
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -100,6 +102,7 @@ public class SmartCheck_NFCActivity extends BaseActivity {
 
             }
         });
+        pointDao=new NFCCheckPointDao(this);
 
         pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this,
                 getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
@@ -110,7 +113,12 @@ public class SmartCheck_NFCActivity extends BaseActivity {
                 new String[]{MifareClassic.class.getName()},
                 new String[]{NfcA.class.getName()}};// 允许扫描的标签类型
 
-        checkPointRequest();
+        if(TextUtils.isEmpty(checkid)){
+            showTips("请正常打开APP后再试");
+            hideProgressDialog();
+        }else{
+            checkPointRequest();
+        }
         reloadLayout.setOnClickListener(this);
     }
 
@@ -122,8 +130,12 @@ public class SmartCheck_NFCActivity extends BaseActivity {
                 overridePendingTransition(R.anim.in_from_left, R.anim.out_from_right);
                 break;
             case R.id.reloadLayout:
-                showProgressDialog("重新加载ing");
-                checkPointRequest();
+                if(TextUtils.isEmpty(checkid)){
+                    showTips("请正常打开APP后再试");
+                }else{
+                    showProgressDialog("重新加载ing");
+                    checkPointRequest();
+                }
                 break;
         }
     }
@@ -151,6 +163,8 @@ public class SmartCheck_NFCActivity extends BaseActivity {
                     CheckPointModel checkpoint = BaseApplication.instance.gson.fromJson(response, CheckPointModel.class);
                     if ("1".equals(checkpoint.getStatecode())) {
                         adapter.notifyItemChoosed(checkpoint.getList());
+                        pointDao.clearDb();
+                        pointDao.insertAllBill(checkpoint.getList());
                         showDataLayout(true);
                     } else {
                         showTips("服务器异常，请稍后再试");
@@ -217,6 +231,8 @@ public class SmartCheck_NFCActivity extends BaseActivity {
             String result = processIntent(intent);
             /** result即NFC中读取的数据*/
             titleView.setText(result);
+            CheckPointModel.ListBean item= pointDao.selectNFCItem(result);
+            Log.i(TAG,"已"+item.getId()+"---"+pointDao.getTableCount());
         }
     }
 
