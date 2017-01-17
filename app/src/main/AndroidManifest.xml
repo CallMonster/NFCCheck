@@ -33,10 +33,6 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ErrorProcessActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.SmartCheck_NFCActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
@@ -68,6 +64,10 @@
             android:name=".activity.CheckPointDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FixErrActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

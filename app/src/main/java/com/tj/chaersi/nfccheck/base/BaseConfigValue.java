@@ -13,6 +13,6 @@ public class BaseConfigValue {
     public static final String CHECKPLAN_URL=BASE_URL+"/inspectionroutemobile/routelist";
     public static final String CHECKPOINT_URL=BASE_URL+"/inspectionrouteinfomobile/showrouteinfo";
     public static final String POINTDETAIL_URL=BASE_URL+"/inspectionrouteinfomobile/showproject";
-
+    public static final String FIXERR_URL=BASE_URL+"/mtrouble/wxlist";
 
 }

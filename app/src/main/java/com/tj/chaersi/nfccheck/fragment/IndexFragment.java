@@ -13,8 +13,8 @@ import com.tj.chaersi.nfccheck.R;
 import com.tj.chaersi.nfccheck.Utils.ShowAllGridLayoutManager;
 import com.tj.chaersi.nfccheck.activity.CheckPlanActivity;
 import com.tj.chaersi.nfccheck.activity.CheckPointDetailActivity;
-import com.tj.chaersi.nfccheck.activity.ErrorProcessActivity;
 import com.tj.chaersi.nfccheck.activity.ErrorUploadActivity;
+import com.tj.chaersi.nfccheck.activity.FixErrActivity;
 import com.tj.chaersi.nfccheck.activity.ResidentCheckActivity;
 import com.tj.chaersi.nfccheck.adapter.CheckItemAdapter;
 import com.tj.chaersi.nfccheck.base.BaseFragment;
@@ -63,7 +63,7 @@ public class IndexFragment extends BaseFragment {
 
                         break;
                     case 2:
-                        Intent errProcessIntent=new Intent(getActivity(), ErrorProcessActivity.class);
+                        Intent errProcessIntent=new Intent(getActivity(), FixErrActivity.class);
                         startActivity(errProcessIntent);
                         getActivity().overridePendingTransition(R.anim.in_from_right,R.anim.out_from_left);
 

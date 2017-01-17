@@ -30,7 +30,7 @@
         android:maxLines="1"
         android:padding="10dp"
         android:singleLine="true"
-        android:text="15100111111"
+        android:text="15111111111"
         android:textColor="@color/text_black"
         android:textSize="18sp" />
 
