@@ -8,6 +8,7 @@
     <include layout="@layout/layout_top" />
 
     <ImageView
+        android:id="@+id/topImgBtn"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:scaleType="fitXY"

@@ -39,4 +39,6 @@ dependencies {
     compile 'com.orhanobut:logger:1.15'
 
     compile project(':okhttputils')
+    compile project(':selectphotoLib')
+
 }

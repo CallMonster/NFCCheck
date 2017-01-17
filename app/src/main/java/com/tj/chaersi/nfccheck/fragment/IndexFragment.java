@@ -12,10 +12,10 @@ import android.widget.TextView;
 import com.tj.chaersi.nfccheck.R;
 import com.tj.chaersi.nfccheck.Utils.ShowAllGridLayoutManager;
 import com.tj.chaersi.nfccheck.activity.CheckPlanActivity;
+import com.tj.chaersi.nfccheck.activity.CheckPointDetailActivity;
 import com.tj.chaersi.nfccheck.activity.ErrorProcessActivity;
 import com.tj.chaersi.nfccheck.activity.ErrorUploadActivity;
 import com.tj.chaersi.nfccheck.activity.ResidentCheckActivity;
-import com.tj.chaersi.nfccheck.activity.SmartCheck_NFCActivity;
 import com.tj.chaersi.nfccheck.adapter.CheckItemAdapter;
 import com.tj.chaersi.nfccheck.base.BaseFragment;
 import com.tj.chaersi.nfccheck.impl.OnRecyclerViewListener;
@@ -30,7 +30,7 @@ public class IndexFragment extends BaseFragment {
     @BindView(R.id.leftBtn) View leftBtn;
 
     @BindView(R.id.showAllItemView) RecyclerView showAllItemView;
-
+    @BindView(R.id.topImgBtn) ImageView topImgBtn;
     public IndexFragment(){}
 
     @Override
@@ -81,11 +81,13 @@ public class IndexFragment extends BaseFragment {
 
             }
         });
+        topImgBtn.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClickListener(View v) {
-
+        Intent intent=new Intent(getActivity(), CheckPointDetailActivity.class);
+        startActivity(intent);
     }
 }

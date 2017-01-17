@@ -60,9 +60,14 @@
             android:name=".activity.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.LoginActivity"
+        <activity
+            android:name=".activity.LoginActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CheckPointDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

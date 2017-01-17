@@ -12,7 +12,7 @@ public class BaseConfigValue {
     public static final String LOGIN_URL=BASE_URL+"/inspectiondata/login";
     public static final String CHECKPLAN_URL=BASE_URL+"/inspectionroutemobile/routelist";
     public static final String CHECKPOINT_URL=BASE_URL+"/inspectionrouteinfomobile/showrouteinfo";
-
+    public static final String POINTDETAIL_URL=BASE_URL+"/inspectionrouteinfomobile/showproject";
 
 
 }
