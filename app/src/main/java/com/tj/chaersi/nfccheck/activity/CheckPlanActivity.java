@@ -98,7 +98,7 @@ public class CheckPlanActivity extends BaseActivity {
                 .addParams("id", BaseApplication.instance.user_id)
                 .build().execute(new StringCallback() {
             @Override
-            public void onBefore(Request request, int id) {
+            public void onAfter(int id) {
                 hideProgressDialog();
             }
 
