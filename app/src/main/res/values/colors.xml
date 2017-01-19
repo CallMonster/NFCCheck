@@ -17,5 +17,6 @@
     <color name="login_btn_bg">#197fee</color>
     <color name="c_teawhite">#f6f8f5</color><!--茶白 -->
     <color name="c_crow">#434b4f</color><!--鸦黑 -->
+    <color name="c_bamboo">#789263</color><!--竹青 -->
 
 </resources>

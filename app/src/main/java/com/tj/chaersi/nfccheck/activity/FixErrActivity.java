@@ -1,5 +1,7 @@
 package com.tj.chaersi.nfccheck.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -62,7 +64,11 @@ public class FixErrActivity extends BaseActivity {
         adapter.addItemClickListener(new OnRecyclerViewListener() {
             @Override
             public void onItemClickListener(int position) {
-                showTips("第" + position);
+                Intent intent=new Intent(FixErrActivity.this,FixErrDetailActivity.class);
+                Bundle mBundle=new Bundle();
+                mBundle.putSerializable("item",fixErrArr.get(position));
+                intent.putExtras(mBundle);
+                startActivity(intent);
             }
 
             @Override
@@ -82,20 +88,19 @@ public class FixErrActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.reloadLayout:
-
+                showProgressDialog("加载中...");
+                loadFixErrData();
                 break;
         }
     }
 
     private void loadFixErrData(){
-        Log.i(TAG,"id:"+BaseApplication.instance.user_id);
         OkHttpUtils.post().url(BaseConfigValue.FIXERR_URL)
                 .addParams("userid", BaseApplication.instance.user_id)
                 .build().execute(new StringCallback() {
             @Override
             public void onAfter(int id) {
                 hideProgressDialog();
-
             }
 
             @Override

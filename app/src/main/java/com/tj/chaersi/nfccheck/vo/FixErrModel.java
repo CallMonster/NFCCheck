@@ -1,40 +1,29 @@
 package com.tj.chaersi.nfccheck.vo;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Chaersi on 17/1/17.
  */
 public class FixErrModel {
+
     /**
      * statecode : 1
-     * list : [{"id":"6cedab5a-ca4b-416a-92c4-be7c0d608589","createDate":1481269379000,"modifyDate":1481269379000,"name":"123","Type":"小区","state":"待维修","info":"在**小区住户李先生的燃气表发生故障，需要人员及时维修","remark":"","sendUserId":"","sendUserName":"李先生 ","servicemanId":"e20cf510-6910-44d4-a650-538ff0eab7a1","servicemanName":"王五","sendCellphone":"","overTime":"","zuobiao":"","sendTime":1484642192651,"senduserTime":1484642192651,"serviceTime":1484642192651,"khTime":1484642192651,"qrmanId":"","qrmanName":"","type":"小区"}]
+     * list : [{"id":"d4aae39c-d5d9-4a7f-a6c5-a342401d4158","zuobiao":"","overTime":"0","sendCellphone":"","urls":["/static/upload/2017/01/20170104104443_836.jpg","/static/upload/2017/01/20170105093631_694.jpg"],"serviceTime":"20170911","sendUserName":"电话","name":"温泉小区2001户","info":"温泉小区2001户燃气表异常"},{"id":"d4aae39c-d5d9-4a7f-a6c5-a342401d4159","zuobiao":"","overTime":"1","sendCellphone":"","urls":[],"serviceTime":"20170107","sendUserName":"李先生 ","name":"小区问题","info":"小区燃气表损坏111"},{"id":"d4aae39c-d5d9-4a7f-a6c5-a342401d4160","zuobiao":"","overTime":"0","sendCellphone":"","urls":[],"serviceTime":"20170801","sendUserName":"李先生","name":"小区问题","info":"温泉小区2001户燃气表异常1"}]
      */
 
     private String statecode;
     /**
-     * id : 6cedab5a-ca4b-416a-92c4-be7c0d608589
-     * createDate : 1481269379000
-     * modifyDate : 1481269379000
-     * name : 123
-     * Type : 小区
-     * state : 待维修
-     * info : 在**小区住户李先生的燃气表发生故障，需要人员及时维修
-     * remark :
-     * sendUserId :
-     * sendUserName : 李先生
-     * servicemanId : e20cf510-6910-44d4-a650-538ff0eab7a1
-     * servicemanName : 王五
-     * sendCellphone :
-     * overTime :
+     * id : d4aae39c-d5d9-4a7f-a6c5-a342401d4158
      * zuobiao :
-     * sendTime : 1484642192651
-     * senduserTime : 1484642192651
-     * serviceTime : 1484642192651
-     * khTime : 1484642192651
-     * qrmanId :
-     * qrmanName :
-     * type : 小区
+     * overTime : 0
+     * sendCellphone :
+     * urls : ["/static/upload/2017/01/20170104104443_836.jpg","/static/upload/2017/01/20170105093631_694.jpg"]
+     * serviceTime : 20170911
+     * sendUserName : 电话
+     * name : 温泉小区2001户
+     * info : 温泉小区2001户燃气表异常
      */
 
     private List<ListBean> list;
@@ -55,29 +44,16 @@ public class FixErrModel {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable {
         private String id;
-        private long createDate;
-        private long modifyDate;
-        private String name;
-        private String Type;
-        private String state;
-        private String info;
-        private String remark;
-        private String sendUserId;
-        private String sendUserName;
-        private String servicemanId;
-        private String servicemanName;
-        private String sendCellphone;
-        private String overTime;
         private String zuobiao;
-        private long sendTime;
-        private long senduserTime;
-        private long serviceTime;
-        private long khTime;
-        private String qrmanId;
-        private String qrmanName;
-        private String type;
+        private String overTime;
+        private String sendCellphone;
+        private String serviceTime;
+        private String sendUserName;
+        private String name;
+        private String info;
+        private List<String> urls;
 
         public String getId() {
             return id;
@@ -85,110 +61,6 @@ public class FixErrModel {
 
         public void setId(String id) {
             this.id = id;
-        }
-
-        public long getCreateDate() {
-            return createDate;
-        }
-
-        public void setCreateDate(long createDate) {
-            this.createDate = createDate;
-        }
-
-        public long getModifyDate() {
-            return modifyDate;
-        }
-
-        public void setModifyDate(long modifyDate) {
-            this.modifyDate = modifyDate;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getType() {
-            return Type;
-        }
-
-        public void setType(String Type) {
-            this.Type = Type;
-        }
-
-        public String getState() {
-            return state;
-        }
-
-        public void setState(String state) {
-            this.state = state;
-        }
-
-        public String getInfo() {
-            return info;
-        }
-
-        public void setInfo(String info) {
-            this.info = info;
-        }
-
-        public String getRemark() {
-            return remark;
-        }
-
-        public void setRemark(String remark) {
-            this.remark = remark;
-        }
-
-        public String getSendUserId() {
-            return sendUserId;
-        }
-
-        public void setSendUserId(String sendUserId) {
-            this.sendUserId = sendUserId;
-        }
-
-        public String getSendUserName() {
-            return sendUserName;
-        }
-
-        public void setSendUserName(String sendUserName) {
-            this.sendUserName = sendUserName;
-        }
-
-        public String getServicemanId() {
-            return servicemanId;
-        }
-
-        public void setServicemanId(String servicemanId) {
-            this.servicemanId = servicemanId;
-        }
-
-        public String getServicemanName() {
-            return servicemanName;
-        }
-
-        public void setServicemanName(String servicemanName) {
-            this.servicemanName = servicemanName;
-        }
-
-        public String getSendCellphone() {
-            return sendCellphone;
-        }
-
-        public void setSendCellphone(String sendCellphone) {
-            this.sendCellphone = sendCellphone;
-        }
-
-        public String getOverTime() {
-            return overTime;
-        }
-
-        public void setOverTime(String overTime) {
-            this.overTime = overTime;
         }
 
         public String getZuobiao() {
@@ -199,52 +71,60 @@ public class FixErrModel {
             this.zuobiao = zuobiao;
         }
 
-        public long getSendTime() {
-            return sendTime;
+        public String getOverTime() {
+            return overTime;
         }
 
-        public void setSendTime(long sendTime) {
-            this.sendTime = sendTime;
+        public void setOverTime(String overTime) {
+            this.overTime = overTime;
         }
 
-        public long getSenduserTime() {
-            return senduserTime;
+        public String getSendCellphone() {
+            return sendCellphone;
         }
 
-        public void setSenduserTime(long senduserTime) {
-            this.senduserTime = senduserTime;
+        public void setSendCellphone(String sendCellphone) {
+            this.sendCellphone = sendCellphone;
         }
 
-        public long getServiceTime() {
+        public String getServiceTime() {
             return serviceTime;
         }
 
-        public void setServiceTime(long serviceTime) {
+        public void setServiceTime(String serviceTime) {
             this.serviceTime = serviceTime;
         }
 
-        public long getKhTime() {
-            return khTime;
+        public String getSendUserName() {
+            return sendUserName;
         }
 
-        public void setKhTime(long khTime) {
-            this.khTime = khTime;
+        public void setSendUserName(String sendUserName) {
+            this.sendUserName = sendUserName;
         }
 
-        public String getQrmanId() {
-            return qrmanId;
+        public String getName() {
+            return name;
         }
 
-        public void setQrmanId(String qrmanId) {
-            this.qrmanId = qrmanId;
+        public void setName(String name) {
+            this.name = name;
         }
 
-        public String getQrmanName() {
-            return qrmanName;
+        public String getInfo() {
+            return info;
         }
 
-        public void setQrmanName(String qrmanName) {
-            this.qrmanName = qrmanName;
+        public void setInfo(String info) {
+            this.info = info;
+        }
+
+        public List<String> getUrls() {
+            return urls;
+        }
+
+        public void setUrls(List<String> urls) {
+            this.urls = urls;
         }
     }
 }

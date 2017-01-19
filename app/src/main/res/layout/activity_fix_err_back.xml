@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/tipLayout"
+        layout="@layout/layout_top" />
+
+    <TextView
+        android:id="@+id/tip_fixname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tipLayout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="隐患名称:"
+        android:textColor="@color/text_black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/fixname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tipLayout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/tip_fixname"
+        android:text="小区气泵情况异常凶险"
+        android:textColor="@color/text_black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tip_fixtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tip_fixname"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="处理时间:"
+        android:textColor="@color/text_black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/fixtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fixname"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/tip_fixtime"
+        android:text="2017-1-21"
+        android:textColor="@color/text_black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tip_fixUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tip_fixtime"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text=" 处 理 人: "
+        android:textColor="@color/text_black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/fixUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fixtime"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/tip_fixUser"
+        android:lineSpacingExtra="5dp"
+        android:text="王尼玛"
+        android:textColor="@color/text_black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tip_fixback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tip_fixUser"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="退回原因："
+        android:textColor="@color/text_black"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/remarkEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tip_fixback"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:hint="请输入退回信息"
+        android:maxLength="100"
+        android:lineSpacingExtra="8dp"
+        android:maxLines="4" />
+
+    <Button
+        android:id="@+id/uploadBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/bg_btn_border_blue"
+        android:text="提 交"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
