@@ -155,6 +155,10 @@ public class CheckDetailAdapter_Photo extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    public ArrayList<HashMap<String,String>> getItemAArr(){
+        return itemAArr;
+    }
+
     public static OnAdapterListener listener;
     public void addItemViewClickListener(OnAdapterListener listener){
         this.listener=listener;

@@ -15,4 +15,6 @@ public class BaseConfigValue {
     public static final String POINTDETAIL_URL=BASE_URL+"/inspectionrouteinfomobile/showproject";
     public static final String FIXERR_URL=BASE_URL+"/mtrouble/wxlist";
 
+    public static final String UPLOAD_IMAGE_URL=BASE_URL+"/inspectiondata/uploadFile";
+
 }

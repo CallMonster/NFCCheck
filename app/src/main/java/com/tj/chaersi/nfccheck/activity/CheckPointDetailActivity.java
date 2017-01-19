@@ -31,6 +31,7 @@ import com.tj.chaersi.okhttputils.OkHttpUtils;
 import com.tj.chaersi.okhttputils.callback.StringCallback;
 import com.tj.opensrc.selectphoto.SystemAlbumPickerActivity;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,7 +91,8 @@ public class CheckPointDetailActivity extends BaseActivity {
 //                }
                 break;
             case R.id.saveBtn:
-
+                Log.i(TAG,"addr:"+adapterPhoto.getItemAArr().get(0).get("imgpath"));
+                uploadImageReq(adapterPhoto.getItemAArr().get(0).get("imgpath"));
                 break;
         }
     }
@@ -184,5 +186,24 @@ public class CheckPointDetailActivity extends BaseActivity {
         }
 
     }
+
+    private void uploadImageReq(String filePath){
+        File uploadFile=new File(filePath);
+
+        OkHttpUtils.post().url(BaseConfigValue.UPLOAD_IMAGE_URL)
+                .addFile("files",uploadFile.getName(),uploadFile)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                Log.e(TAG,"err:"+e);
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                Log.i(TAG,"success:"+response);
+            }
+        });
+    }
+
 
 }

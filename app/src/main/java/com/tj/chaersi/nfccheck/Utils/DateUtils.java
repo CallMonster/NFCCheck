@@ -13,8 +13,13 @@ public class DateUtils {
      * @param stamp
      * @return
      */
-    public static String convertDate(long stamp) {
+    public static String convertTime(long stamp) {
         SimpleDateFormat time=new SimpleDateFormat("MM/dd");
+        return time.format(new Date(stamp));
+    }
+
+    public static String convertDate(long stamp) {
+        SimpleDateFormat time=new SimpleDateFormat("yyyy-MM-dd");
         return time.format(new Date(stamp));
     }
 
