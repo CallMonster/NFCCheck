@@ -70,7 +70,10 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activity.FixErrDetailActivity" />
         <activity android:name=".activity.FixErrFinishActivity" />
-        <activity android:name=".activity.FixErrBackActivity"></activity>
+        <activity android:name=".activity.FixErrBackActivity" />
+        <activity android:name=".activity.CommunityLocalActivity" />
+        <activity android:name=".activity.ChooseResidentActivity" />
+        <activity android:name=".activity.PressureActivity"></activity>
     </application>
 
 </manifest>
