@@ -108,7 +108,7 @@ public class CheckDetailAdapter_Judge extends BaseAdapter {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus==false){
-                    EditText edt = (EditText)v.findViewById(R.id.dataItemEdit);
+                    EditText edt = (EditText)v.findViewById(R.id.judgeEdit);
                     HashMap<String,String> itemMap=chooseArr.get(position);
                     itemMap.put("remark",edt.getText().toString());
                 }
@@ -119,7 +119,7 @@ public class CheckDetailAdapter_Judge extends BaseAdapter {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if(actionId== EditorInfo.IME_ACTION_DONE){
-                    EditText edt = (EditText)v.findViewById(R.id.dataItemEdit);
+                    EditText edt = (EditText)v.findViewById(R.id.judgeEdit);
                     edt.clearFocus();
                     InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
@@ -139,5 +139,9 @@ public class CheckDetailAdapter_Judge extends BaseAdapter {
     private class ViewHolder{
         TextView judgeTip,judgeNormal,judgeException;
         EditText judgeEdit;
+    }
+
+    public ArrayList<HashMap<String,String>> getChooseArr(){
+        return chooseArr;
     }
 }

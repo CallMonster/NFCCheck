@@ -9,6 +9,7 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.tech.MifareClassic;
 import android.nfc.tech.NfcA;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tj.chaersi.nfccheck.R;
+import com.tj.chaersi.nfccheck.Utils.PreferenceUtils;
 import com.tj.chaersi.nfccheck.adapter.CheckPointAdapter;
 import com.tj.chaersi.nfccheck.base.BaseActivity;
 import com.tj.chaersi.nfccheck.base.BaseApplication;
@@ -42,6 +44,7 @@ import okhttp3.Request;
  */
 public class SmartCheck_NFCActivity extends BaseActivity {
     private String TAG = "SmartCheck_NFCActivity";
+    private static int CHECK_POINT_CODE=1;
 
     @BindView(R.id.title) TextView titleView;
     @BindView(R.id.leftBtn) View leftBtn;
@@ -59,9 +62,11 @@ public class SmartCheck_NFCActivity extends BaseActivity {
     private String[][] mTechLists;
     private boolean isFirst = true;
 
+    private PreferenceUtils preference;
+
     private ArrayList<CheckPointModel.ListBean> pointArr;
     private CheckPointAdapter adapter;
-    private String checkid;
+    private String checkid,planTime;
     private NFCCheckPointDao pointDao;
     @Override
     public void onCreate() {
@@ -79,9 +84,12 @@ public class SmartCheck_NFCActivity extends BaseActivity {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         checkid = intent.getStringExtra("detail_id");
+        planTime = intent.getStringExtra("plantime");
 
         titleView.setText("NFC巡检");
         leftBtn.setOnClickListener(this);
+
+        preference=new PreferenceUtils(this);
 
         pointArr = new ArrayList<>();
         checkpointView.setHasFixedSize(true);
@@ -196,6 +204,14 @@ public class SmartCheck_NFCActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK&&requestCode==CHECK_POINT_CODE){
+            showProgressDialog("数据更新中..");
+            checkPointRequest();
+        }
+    }
 
     /**
      * NFC读取功能
@@ -230,9 +246,25 @@ public class SmartCheck_NFCActivity extends BaseActivity {
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(intent.getAction())) {
             String result = processIntent(intent);
             /** result即NFC中读取的数据*/
-            titleView.setText(result);
             CheckPointModel.ListBean item= pointDao.selectNFCItem(result);
-            Log.i(TAG,"已"+item.getId()+"---"+pointDao.getTableCount());
+            if(item!=null){
+                if("未巡检".equals(item.getState().trim())){
+                    Intent detailIntent=new Intent(this,CheckPointDetailActivity.class);
+                    Bundle mBundle=new Bundle();
+                    mBundle.putString("name",item.getName());
+                    mBundle.putString("routeId",item.getId());
+                    mBundle.putString("userId",BaseApplication.instance.user_id);
+                    mBundle.putString("userName",preference.getUserInfo().getRealname());
+                    mBundle.putString("planTime",planTime);
+                    mBundle.putString("pointid",item.getId());
+                    detailIntent.putExtras(mBundle);
+                    startActivityForResult(detailIntent,CHECK_POINT_CODE);
+                }else{
+                    showTips("此巡检点已巡检");
+                }
+            }else{
+                showTips("未找到匹配数据");
+            }
         }
     }
 

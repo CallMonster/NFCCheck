@@ -158,6 +158,13 @@ public class CheckDetailAdapter_Photo extends BaseAdapter {
     public ArrayList<HashMap<String,String>> getItemAArr(){
         return itemAArr;
     }
+    public ArrayList<HashMap<String,String>> getItemBArr(){
+        return itemBArr;
+    }
+    public ArrayList<HashMap<String,String>> getItemCArr(){
+        return itemCArr;
+    }
+
 
     public static OnAdapterListener listener;
     public void addItemViewClickListener(OnAdapterListener listener){

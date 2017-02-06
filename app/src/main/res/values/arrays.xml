@@ -12,6 +12,7 @@
         <item>故障上报</item>
         <item>故障待办</item>
         <item>智能巡检</item>
+        <item>故障确认</item>
     </string-array>
 
     <string-array name="errAreaArr">

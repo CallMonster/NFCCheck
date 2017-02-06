@@ -138,8 +138,10 @@ public class CheckPointAdapter extends RecyclerView.Adapter<CheckPointAdapter.It
      * @param pointArr
      */
     public void notifyItemChoosed(List<CheckPointModel.ListBean> pointArr){
+        this.pointArr.clear();
         this.pointArr.addAll(pointArr);
-        for(int i=0;i<pointArr.size();i++){
+        isChoosed.clear();
+        for(int i=0;i< this.pointArr.size();i++){
             isChoosed.put(i,false);
         }
         this.notifyDataSetChanged();

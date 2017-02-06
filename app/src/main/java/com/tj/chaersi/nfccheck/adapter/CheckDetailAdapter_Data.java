@@ -104,4 +104,9 @@ public class CheckDetailAdapter_Data extends BaseAdapter {
         TextView itemTip;
         EditText itemEdit;
     }
+
+    public ArrayList<HashMap<String,String>> getEditArr(){
+        return editArr;
+    }
+
 }

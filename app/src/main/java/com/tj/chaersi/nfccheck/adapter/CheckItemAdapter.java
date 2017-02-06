@@ -30,7 +30,8 @@ public class CheckItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         indexTitleArr = context.getResources().getStringArray(R.array.indexTitleArr);
         indexTagArr = new int[]{
                 R.mipmap.ic_index_one, R.mipmap.ic_index_two,
-                R.mipmap.ic_index_three, R.mipmap.ic_index_four
+                R.mipmap.ic_index_three, R.mipmap.ic_index_four,
+                R.mipmap.ic_index_five
         };
     }
 
