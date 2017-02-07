@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tj.chaersi.nfccheck.R;
+import com.tj.chaersi.nfccheck.Utils.DateUtils;
 import com.tj.chaersi.nfccheck.Utils.PreferenceUtils;
 import com.tj.chaersi.nfccheck.adapter.CheckPointAdapter;
 import com.tj.chaersi.nfccheck.base.BaseActivity;
@@ -257,6 +258,7 @@ public class SmartCheck_NFCActivity extends BaseActivity {
                     mBundle.putString("userName",preference.getUserInfo().getRealname());
                     mBundle.putString("planTime",planTime);
                     mBundle.putString("pointid",item.getId());
+                    mBundle.putString("checktime",DateUtils.convertTime(item.getCreateDate()));
                     detailIntent.putExtras(mBundle);
                     startActivityForResult(detailIntent,CHECK_POINT_CODE);
                 }else{

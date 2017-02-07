@@ -73,7 +73,7 @@ public class CheckPointDetailActivity extends BaseActivity {
     @BindView(R.id.saveBtn) Button saveBtn;
 
     private String detailId;//"f5b737b2-ef22-4ead-b560-5ef56405fd06"
-    private String nameStr,userIdStr,userNameStr,planTime,pointid;
+    private String nameStr,userIdStr,userNameStr,planTime,pointid,checktime;
 
     private ArrayList<PointDetailModel.ListBean> dataArr;
     private ArrayList<PointDetailModel.ListBean> judgeArr;
@@ -96,6 +96,7 @@ public class CheckPointDetailActivity extends BaseActivity {
         userNameStr=intent.getStringExtra("userName");
         planTime=intent.getStringExtra("planTime");
         pointid=intent.getStringExtra("pointid");
+        checktime=intent.getStringExtra("checktime");
 
         title.setText("巡检点详情");
         leftBtn.setOnClickListener(this);
@@ -201,8 +202,8 @@ public class CheckPointDetailActivity extends BaseActivity {
                 if(response!=null) {
                     PointDetailModel detailModel = BaseApplication.gson.fromJson(response, PointDetailModel.class);
                     if ("1".equals(detailModel.getStatecode())) {
-//                        checkUserName.setText(detailModel.g);
-//                        checkTime.setText();
+                        checkUserName.setText(userNameStr);
+                        checkTime.setText(checktime);
                         List<PointDetailModel.ListBean> listbeanArr=detailModel.getList();
 
                         photoArr=new ArrayList<PointDetailModel.ListBean>();
