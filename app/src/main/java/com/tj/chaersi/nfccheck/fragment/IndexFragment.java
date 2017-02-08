@@ -87,7 +87,5 @@ public class IndexFragment extends BaseFragment {
 
     @Override
     public void onClickListener(View v) {
-        Intent intent=new Intent(getActivity(), CheckPointDetailActivity.class);
-        startActivity(intent);
     }
 }

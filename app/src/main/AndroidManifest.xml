@@ -73,7 +73,8 @@
         <activity android:name=".activity.FixErrBackActivity" />
         <activity android:name=".activity.CommunityLocalActivity" />
         <activity android:name=".activity.ChooseResidentActivity" />
-        <activity android:name=".activity.PressureActivity"></activity>
+        <activity android:name=".activity.PressureActivity" />
+        <activity android:name=".activity.Index05_Activity"></activity>
     </application>
 
 </manifest>

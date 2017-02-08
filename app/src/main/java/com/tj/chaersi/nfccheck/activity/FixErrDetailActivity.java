@@ -2,6 +2,8 @@ package com.tj.chaersi.nfccheck.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.tj.chaersi.nfccheck.R;
 import com.tj.chaersi.nfccheck.Utils.DateUtils;
 import com.tj.chaersi.nfccheck.base.BaseActivity;
+import com.tj.chaersi.nfccheck.base.BaseConfigValue;
 import com.tj.chaersi.nfccheck.vo.FixErrModel;
 
 import java.util.ArrayList;
@@ -42,19 +45,20 @@ public class FixErrDetailActivity extends BaseActivity {
         Intent intent = getIntent();
         fixErrItem = (FixErrModel.ListBean) intent.getSerializableExtra("item");
 
-        fixname.setText(fixErrItem.getName());
-        fixtime.setText(fixErrItem.getServiceTime());
-        fixdetail.setText(fixErrItem.getInfo());
-        fixContact.setText(fixErrItem.getSendCellphone()+" "+fixErrItem.getSendUserName());
+        fixname.setText(TextUtils.isEmpty(fixErrItem.getName())?"-":fixErrItem.getName());
+        fixtime.setText(TextUtils.isEmpty(fixErrItem.getServiceTime())?"-":fixErrItem.getServiceTime());
+        fixdetail.setText(TextUtils.isEmpty(fixErrItem.getInfo())?"-":fixErrItem.getInfo());
+        fixContact.setText(TextUtils.isEmpty(fixErrItem.getSendCellphone()+" "+fixErrItem.getSendUserName())
+                ?"-":fixErrItem.getSendCellphone()+" "+fixErrItem.getSendUserName());
 
         ArrayList<ImageView> imageViews=new ArrayList<>();
         imageViews.add(fixImageA);
         imageViews.add(fixImageB);
         imageViews.add(fixImageC);
         for(int i=0;i<fixErrItem.getUrls().size();i++){
-            Glide.with(this).load(fixErrItem.getUrls().get(i)).into(imageViews.get(i));
+            Glide.with(this).load(BaseConfigValue.IMAGE_URL+fixErrItem.getUrls().get(i))
+                    .into(imageViews.get(i));
         }
-
     }
 
     @OnClick({R.id.leftBtn, R.id.fixFinishBtn, R.id.fixBackBtn})
@@ -68,15 +72,25 @@ public class FixErrDetailActivity extends BaseActivity {
                 Bundle finishBundle=new Bundle();
                 finishBundle.putSerializable("detail",fixErrItem);
                 finishIntent.putExtras(finishBundle);
-                startActivity(finishIntent);
+                startActivityForResult(finishIntent,0);
                 break;
             case R.id.fixBackBtn:
                 Intent backIntent=new Intent(this,FixErrBackActivity.class);
                 Bundle backBundle=new Bundle();
                 backBundle.putSerializable("detail",fixErrItem);
                 backIntent.putExtras(backBundle);
-                startActivity(backIntent);
+                startActivityForResult(backIntent,0);
                 break;
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK&&requestCode==0){
+            setResult(RESULT_OK);
+            finish();
+        }
+    }
+
 }

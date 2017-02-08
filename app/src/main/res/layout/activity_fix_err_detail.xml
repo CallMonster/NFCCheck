@@ -27,7 +27,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@id/tip_fixname"
-        android:text="小区气泵情况异常凶险"
         android:textColor="@color/text_black"
         android:textSize="16sp" />
 
@@ -50,7 +49,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/tip_fixtime"
-        android:text="2017-1-21"
         android:textColor="@color/text_black"
         android:textSize="16sp" />
 
@@ -75,7 +73,6 @@
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/tip_fixDetail"
         android:lineSpacingExtra="5dp"
-        android:text="温泉小区2001户燃气表异常，温泉小区2001户燃气表异常"
         android:textColor="@color/text_black"
         android:textSize="16sp" />
 
@@ -100,7 +97,6 @@
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/tip_fixDetail"
         android:lineSpacingExtra="5dp"
-        android:text="15022521890 王尼玛"
         android:textColor="@color/text_black"
         android:textSize="16sp" />
 

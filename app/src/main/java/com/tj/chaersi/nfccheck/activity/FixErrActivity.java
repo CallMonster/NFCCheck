@@ -68,7 +68,7 @@ public class FixErrActivity extends BaseActivity {
                 Bundle mBundle=new Bundle();
                 mBundle.putSerializable("item",fixErrArr.get(position));
                 intent.putExtras(mBundle);
-                startActivity(intent);
+                startActivityForResult(intent,0);
             }
 
             @Override
@@ -94,6 +94,15 @@ public class FixErrActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK&&requestCode==0){
+            showProgressDialog("数据更新中..");
+            loadFixErrData();
+        }
+    }
+
     private void loadFixErrData(){
         OkHttpUtils.post().url(BaseConfigValue.FIXERR_URL)
                 .addParams("userid", BaseApplication.instance.user_id)
@@ -116,6 +125,7 @@ public class FixErrActivity extends BaseActivity {
                 if(response!=null){
                     FixErrModel fixErrModel=BaseApplication.gson.fromJson(response, FixErrModel.class);
                     if("1".equals(fixErrModel.getStatecode())){
+                        fixErrArr.clear();
                         fixErrArr.addAll(fixErrModel.getList());
                         adapter.notifyDataSetChanged();
                         showDataLayout(true);
