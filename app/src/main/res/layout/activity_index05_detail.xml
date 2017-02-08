@@ -159,6 +159,30 @@
                 android:scaleType="fitXY"
                 android:src="@mipmap/ic_default" />
 
+            <TextView
+                android:id="@+id/tip_dealWorker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tip_fixDetail"
+                android:layout_below="@+id/fixImage_A"
+                android:layout_marginTop="15dp"
+                android:text="处理人:"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/dealWorker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fixImage_A"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/tip_dealWorker"
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+
         </RelativeLayout>
     </ScrollView>
 
@@ -170,19 +194,19 @@
 
         <Button
             android:id="@+id/fixFinishBtn"
-            android:layout_width="match_parent"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:background="@drawable/bg_btn_border_blue"
             android:gravity="center"
-            android:text="维修完成"
+            android:text="结束隐患"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
         <Button
             android:id="@+id/fixBackBtn"
-            android:layout_width="match_parent"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
@@ -191,6 +215,7 @@
             android:text="隐患退回"
             android:textColor="@color/white"
             android:textSize="18sp" />
+
     </LinearLayout>
 
 </FrameLayout>

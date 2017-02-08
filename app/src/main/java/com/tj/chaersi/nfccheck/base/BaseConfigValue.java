@@ -23,6 +23,8 @@ public class BaseConfigValue {
     public static final String FIXERR_FINISH_URL=BASE_URL+"/mtrouble/servicedata";//维修完成
 
     public static final String ERR_CONFIRM_URL=BASE_URL+"/mtrouble/fishlist";
+    public static final String ERR_BACK_URL=BASE_URL+"/mtrouble/qreback";
+    public static final String ERR_OVER_URL=BASE_URL+"/mtrouble/finish";
 
     public static final String UPLOAD_IMAGE_URL=BASE_URL+"/inspectiondata/uploadFile";//上传图片
 

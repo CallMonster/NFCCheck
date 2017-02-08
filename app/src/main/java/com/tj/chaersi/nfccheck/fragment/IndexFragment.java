@@ -15,6 +15,7 @@ import com.tj.chaersi.nfccheck.activity.CheckPlanActivity;
 import com.tj.chaersi.nfccheck.activity.CheckPointDetailActivity;
 import com.tj.chaersi.nfccheck.activity.ErrorUploadActivity;
 import com.tj.chaersi.nfccheck.activity.FixErrActivity;
+import com.tj.chaersi.nfccheck.activity.Index05_Activity;
 import com.tj.chaersi.nfccheck.activity.ResidentCheckActivity;
 import com.tj.chaersi.nfccheck.adapter.CheckItemAdapter;
 import com.tj.chaersi.nfccheck.base.BaseFragment;
@@ -71,6 +72,11 @@ public class IndexFragment extends BaseFragment {
                     case 3:
                         Intent smartIntent=new Intent(getActivity(), CheckPlanActivity.class);
                         startActivity(smartIntent);
+                        getActivity().overridePendingTransition(R.anim.in_from_right,R.anim.out_from_left);
+                        break;
+                    case 4:
+                        Intent confirmIntent=new Intent(getActivity(), Index05_Activity.class);
+                        startActivity(confirmIntent);
                         getActivity().overridePendingTransition(R.anim.in_from_right,R.anim.out_from_left);
                         break;
                 }

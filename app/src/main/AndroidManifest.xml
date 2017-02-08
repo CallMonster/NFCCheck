@@ -68,13 +68,37 @@
             android:name=".activity.FixErrActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.FixErrDetailActivity" />
-        <activity android:name=".activity.FixErrFinishActivity" />
-        <activity android:name=".activity.FixErrBackActivity" />
+        <activity
+            android:name=".activity.FixErrDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FixErrFinishActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FixErrBackActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.CommunityLocalActivity" />
         <activity android:name=".activity.ChooseResidentActivity" />
         <activity android:name=".activity.PressureActivity" />
-        <activity android:name=".activity.Index05_Activity"></activity>
+        <activity
+            android:name=".activity.Index05_Activity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Index05DetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Index5DetailOverAct"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Index5DetailBackAct"
+            android:exported="false"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
