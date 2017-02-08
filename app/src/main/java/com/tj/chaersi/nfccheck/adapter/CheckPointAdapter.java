@@ -50,7 +50,7 @@ public class CheckPointAdapter extends RecyclerView.Adapter<CheckPointAdapter.It
         holder.serialView.setText((position+1)+"");
         holder.pointName.setText(TextUtils.isEmpty(item.getName())?"-":item.getName());
         holder.checkState.setText(TextUtils.isEmpty(item.getState())?"-":item.getState());
-        holder.checkTime.setText(DateUtils.convertTime(item.getCreateDate()));
+        holder.checkTime.setText(TextUtils.isEmpty(item.getCreateDate()+"")?"-":DateUtils.convertTime(item.getCreateDate()));
         holder.checkWorker.setText(TextUtils.isEmpty(item.getUsername())?"-":item.getUsername());
         holder.position=position;
         if(isChoosed.get(position)){

@@ -106,14 +106,16 @@ public class Index5DetailOverAct extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        String imgPath=data.getStringExtra(SystemAlbumPickerActivity.key_singlePath);
         if (resultCode == SystemAlbumPickerActivity.resultCode_SINGLE_PATH && requestCode == IMAGE_TAG_A) {
+            String imgPath=data.getStringExtra(SystemAlbumPickerActivity.key_singlePath);
             imgABtn.setImageBitmap(ImageLoadUtils.pathToBitmap(ImageUtils.getimage(imgPath)));
             imgMap.put("A",imgPath);
         } else if (resultCode == RESULT_OK && requestCode == IMAGE_TAG_B) {
+            String imgPath=data.getStringExtra(SystemAlbumPickerActivity.key_singlePath);
             imgBBtn.setImageBitmap(ImageLoadUtils.pathToBitmap(ImageUtils.getimage(imgPath)));
             imgMap.put("B",imgPath);
         } else if (resultCode == RESULT_OK && requestCode == IMAGE_TAG_C) {
+            String imgPath=data.getStringExtra(SystemAlbumPickerActivity.key_singlePath);
             imgCBtn.setImageBitmap(ImageLoadUtils.pathToBitmap(ImageUtils.getimage(imgPath)));
             imgMap.put("C",imgPath);
         }
