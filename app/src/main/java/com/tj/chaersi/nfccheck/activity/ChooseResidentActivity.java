@@ -12,6 +12,7 @@ import butterknife.ButterKnife;
 
 /**
  * 选择居民户
+ * @deprecated
  */
 public class ChooseResidentActivity extends BaseActivity {
 

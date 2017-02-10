@@ -205,7 +205,32 @@
         android:layout_weight="1"
         android:cacheColorHint="#00000000"
         android:fadingEdge="none"
+        android:visibility="gone"
         android:overScrollMode="never"
         android:scrollbars="vertical" />
 
+    <LinearLayout
+        android:id="@+id/reloadLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="visible"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="20dp"
+            android:alpha="0.5"
+            android:src="@mipmap/empty" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:text="轻触重新加载"
+            android:textColor="@color/text_black"
+            android:textSize="20sp" />
+    </LinearLayout>
 </LinearLayout>

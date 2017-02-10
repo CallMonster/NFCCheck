@@ -97,7 +97,7 @@ public class CheckPointDetailActivity extends BaseActivity {
         planTime=intent.getStringExtra("planTime");
         pointid=intent.getStringExtra("pointid");
         checktime=intent.getStringExtra("checktime");
-
+        showProgressDialog("加载中..");
         title.setText("巡检点详情");
         leftBtn.setOnClickListener(this);
         saveBtn.setOnClickListener(this);
@@ -111,6 +111,11 @@ public class CheckPointDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.saveBtn:
+                if(adapterPhoto==null&&adapterData==null&&adapterJudge==null){
+                    showTips("已经完成了此巡检");
+                    return;
+                }
+
                 ArrayList<HashMap<String,File>> photoUploadArr=new ArrayList<>();
                 if(adapterPhoto!=null){
                     showProgressDialog("提交比较缓慢，请耐心等待...");
@@ -150,32 +155,38 @@ public class CheckPointDetailActivity extends BaseActivity {
                     alldataBean.setPointid(pointid);
                     alldataBean.setUserName(userNameStr);
                     List<SendInspectionDatasBean> sendInspectionDatas=new ArrayList<SendInspectionDatasBean>();
-                    ArrayList<HashMap<String,String>> tempDataEditArr=adapterData.getEditArr();
-                    for(int i=0;i<tempDataEditArr.size();i++){
-                        SendInspectionDatasBean dataItem=new SendInspectionDatasBean();
-                        dataItem.setId(dataArr.get(i).getId());
-                        dataItem.setInfo(tempDataEditArr.get(i).get("editValue"));
-                        dataItem.setIsAbnormal("");
-                        dataItem.setName(dataArr.get(i).getName());
-                        dataItem.setType("1");
-                        List<SendimagesBean> dataimages=new ArrayList<SendimagesBean>();
-                        dataItem.setSendimages(dataimages);
-                        sendInspectionDatas.add(dataItem);
+
+                    if(adapterData!=null){
+                        ArrayList<HashMap<String,String>> tempDataEditArr=adapterData.getEditArr();
+                        for(int i=0;i<tempDataEditArr.size();i++){
+                            SendInspectionDatasBean dataItem=new SendInspectionDatasBean();
+                            dataItem.setId(dataArr.get(i).getId());
+                            dataItem.setInfo(tempDataEditArr.get(i).get("editValue"));
+                            dataItem.setIsAbnormal("");
+                            dataItem.setName(dataArr.get(i).getName());
+                            dataItem.setType("1");
+                            List<SendimagesBean> dataimages=new ArrayList<SendimagesBean>();
+                            dataItem.setSendimages(dataimages);
+                            sendInspectionDatas.add(dataItem);
+                        }
                     }
 
-                    ArrayList<HashMap<String,String>> tempJudgeArr=adapterJudge.getChooseArr();
-                    for(int i=0;i<tempJudgeArr.size();i++){
-                        SendInspectionDatasBean judgeItem=new SendInspectionDatasBean();
-                        judgeItem.setId(judgeArr.get(i).getId());
-                        judgeItem.setInfo(("remark"));
-                        judgeItem.setIsAbnormal(tempJudgeArr.get(i).get("state"));
-                        judgeItem.setName(judgeArr.get(i).getName());
-                        judgeItem.setType("3");
+                    if(adapterJudge!=null){
+                        ArrayList<HashMap<String,String>> tempJudgeArr=adapterJudge.getChooseArr();
+                        for(int i=0;i<tempJudgeArr.size();i++){
+                            SendInspectionDatasBean judgeItem=new SendInspectionDatasBean();
+                            judgeItem.setId(judgeArr.get(i).getId());
+                            judgeItem.setInfo(("remark"));
+                            judgeItem.setIsAbnormal(tempJudgeArr.get(i).get("state"));
+                            judgeItem.setName(judgeArr.get(i).getName());
+                            judgeItem.setType("3");
 
-                        List<SendimagesBean> judgeimages=new ArrayList<SendimagesBean>();
-                        judgeItem.setSendimages(judgeimages);
-                        sendInspectionDatas.add(judgeItem);
+                            List<SendimagesBean> judgeimages=new ArrayList<SendimagesBean>();
+                            judgeItem.setSendimages(judgeimages);
+                            sendInspectionDatas.add(judgeItem);
+                        }
                     }
+
                     alldataBean.setSendInspectionDatas(sendInspectionDatas);
                     detailModel.setAlldata(alldataBean);
                     submitFormData(BaseApplication.gson.toJson(detailModel));
@@ -191,6 +202,11 @@ public class CheckPointDetailActivity extends BaseActivity {
         OkHttpUtils.post().url(BaseConfigValue.POINTDETAIL_URL)
                 .addParams("id", detailId)
                 .build().execute(new StringCallback() {
+            @Override
+            public void onAfter(int id) {
+                hideProgressDialog();
+            }
+
             @Override
             public void onError(Call call, Exception e, int id) {
                 Log.e(TAG,"err result:"+e);

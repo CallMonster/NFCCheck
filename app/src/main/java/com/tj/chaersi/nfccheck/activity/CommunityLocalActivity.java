@@ -14,6 +14,7 @@ import butterknife.OnClick;
 
 /**
  * 小区定位
+ * @deprecated
  */
 public class CommunityLocalActivity extends BaseActivity {
 

@@ -66,29 +66,33 @@ public class NFCCheckPointDao {
                 DBInitDesign.NFCCHECKPOINT_TABLE_NAME+" WHERE point_labelNum=? ORDER BY _id;";
 
         Cursor cursor=db.rawQuery(sql,new String[]{nfcId.trim()});
-
-        while(cursor.moveToNext()){
-            resultBean.setId(cursor.getString(1));
-            resultBean.setCreateDate(Long.parseLong(cursor.getString(2)));
-            resultBean.setModifyDate(Long.parseLong(cursor.getString(3)));
-            resultBean.setCompanyID(cursor.getString(4));
-            resultBean.setName(cursor.getString(5));
-            resultBean.setDistingguishType(cursor.getString(6));
-            resultBean.setIsLock("1".equals(cursor.getString(7))?true:false);
-            resultBean.setLatitudeAndLongitude(cursor.getString(8));
-            resultBean.setLabelNum(cursor.getString(9));
-            resultBean.setNum(cursor.getString(10));
-            resultBean.setTerriborialId(cursor.getString(11));
-            resultBean.setVersion(cursor.getString(12));
-            resultBean.setXqId(cursor.getString(13));
-            resultBean.setType(cursor.getString(14));
-            resultBean.setListOrder(cursor.getString(15));
-            resultBean.setState(cursor.getString(16));
-            resultBean.setPlantime(cursor.getString(17));
-            resultBean.setUsername(cursor.getString(18));
-            break;
+        if(cursor.getCount()>0){
+            while(cursor.moveToNext()){
+                resultBean.setId(cursor.getString(1));
+                resultBean.setCreateDate(Long.parseLong(cursor.getString(2)));
+                resultBean.setModifyDate(Long.parseLong(cursor.getString(3)));
+                resultBean.setCompanyID(cursor.getString(4));
+                resultBean.setName(cursor.getString(5));
+                resultBean.setDistingguishType(cursor.getString(6));
+                resultBean.setIsLock("1".equals(cursor.getString(7))?true:false);
+                resultBean.setLatitudeAndLongitude(cursor.getString(8));
+                resultBean.setLabelNum(cursor.getString(9));
+                resultBean.setNum(cursor.getString(10));
+                resultBean.setTerriborialId(cursor.getString(11));
+                resultBean.setVersion(cursor.getString(12));
+                resultBean.setXqId(cursor.getString(13));
+                resultBean.setType(cursor.getString(14));
+                resultBean.setListOrder(cursor.getString(15));
+                resultBean.setState(cursor.getString(16));
+                resultBean.setPlantime(cursor.getString(17));
+                resultBean.setUsername(cursor.getString(18));
+                break;
+            }
+            return resultBean;
+        }else{
+           return null;
         }
-        return resultBean;
+
     }
 
     /**

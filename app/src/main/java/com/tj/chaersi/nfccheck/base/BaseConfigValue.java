@@ -15,7 +15,6 @@ public class BaseConfigValue {
     public static final String CHECKPOINT_URL=BASE_URL+"/inspectionrouteinfomobile/showrouteinfo";//路线站点详情
     public static final String POINTDETAIL_URL=BASE_URL+"/inspectionrouteinfomobile/showproject";//站点巡检项目详情
 
-    public static final String CHECKRESIDENT_URL=BASE_URL+"";//居民巡检
     public static final String SAVE_CHECKDETAIL_URL=BASE_URL+"/inspectiondata/filesup";//保存巡检点详情
 
     public static final String FIXERR_URL=BASE_URL+"/mtrouble/wxlist";//维修待办
@@ -25,6 +24,11 @@ public class BaseConfigValue {
     public static final String ERR_CONFIRM_URL=BASE_URL+"/mtrouble/fishlist";
     public static final String ERR_BACK_URL=BASE_URL+"/mtrouble/qreback";
     public static final String ERR_OVER_URL=BASE_URL+"/mtrouble/finish";
+
+    public static final String CHECKRESIDENT_PLAN_URL=BASE_URL+"/inspectionroutemobile/routelistbyxq";//路线计划列表
+    public static final String CHECKRESIDENT_URL=BASE_URL+"/inspectionrouteinfomobile/getshowrouteinfo";//9巡检点2-定位方式-小区居民
+    public static final String CHECKRESIDENT_LOCAl_URL=BASE_URL+"/inspectionpoint/xqlist";//定位小区
+    public static final String CHECKRESIDENT_CHOOSE_URL=BASE_URL+"/inspectionpoint/jmlist";//选择居民户
 
     public static final String UPLOAD_IMAGE_URL=BASE_URL+"/inspectiondata/uploadFile";//上传图片
 

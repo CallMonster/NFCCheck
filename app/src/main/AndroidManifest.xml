@@ -98,6 +98,18 @@
         <activity
             android:name=".activity.Index5DetailBackAct"
             android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Index01Activity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Index01RsidentAct"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.Index0101Act"
+            android:exported="false"
             android:screenOrientation="portrait"></activity>
     </application>
 

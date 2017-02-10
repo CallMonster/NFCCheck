@@ -15,6 +15,7 @@ import com.tj.chaersi.nfccheck.activity.CheckPlanActivity;
 import com.tj.chaersi.nfccheck.activity.CheckPointDetailActivity;
 import com.tj.chaersi.nfccheck.activity.ErrorUploadActivity;
 import com.tj.chaersi.nfccheck.activity.FixErrActivity;
+import com.tj.chaersi.nfccheck.activity.Index01Activity;
 import com.tj.chaersi.nfccheck.activity.Index05_Activity;
 import com.tj.chaersi.nfccheck.activity.ResidentCheckActivity;
 import com.tj.chaersi.nfccheck.adapter.CheckItemAdapter;
@@ -53,7 +54,7 @@ public class IndexFragment extends BaseFragment {
             public void onItemClickListener(int position) {
                 switch (position){
                     case 0:
-                        Intent residentIntent=new Intent(getActivity(), ResidentCheckActivity.class);
+                        Intent residentIntent=new Intent(getActivity(), Index01Activity.class);
                         startActivity(residentIntent);
                         getActivity().overridePendingTransition(R.anim.in_from_right,R.anim.out_from_left);
                         break;
