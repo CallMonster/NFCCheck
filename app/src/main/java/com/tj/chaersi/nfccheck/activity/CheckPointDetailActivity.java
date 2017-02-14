@@ -426,7 +426,7 @@ public class CheckPointDetailActivity extends BaseActivity {
                     detailModel.setAlldata(alldataBean);
 //                    Log.i(TAG,BaseApplication.gson.toJson(detailModel));
                     hideProgressDialog();
-                    submitFormData(BaseApplication.gson.toJson(detailModel));
+                    submitFormData(BaseApplication.gson.toJson(detailModel.getAlldata()));
                 }else{
                     showTips("图片上传有误。");
                 }
@@ -439,11 +439,15 @@ public class CheckPointDetailActivity extends BaseActivity {
      */
     private void submitFormData(String saveData){
         showProgressDialog("数据保存中..");
-        Log.i(TAG,saveData);
-        OkHttpUtils.postString().url(BaseConfigValue.SAVE_CHECKDETAIL_URL)
-                .content(saveData)
-                .mediaType(MediaType.parse("application/json; charset=utf-8"))
+        Log.i(TAG,"提交数据："+saveData);
+//        OkHttpUtils.postString().url(BaseConfigValue.SAVE_CHECKDETAIL_URL)
+//                .content(saveData)
+//                .mediaType(MediaType.parse("application/json; charset=utf-8"))
+//                .build().execute(new StringCallback() {
+        OkHttpUtils.post().url(BaseConfigValue.SAVE_CHECKDETAIL_URL)
+                .addParams("alldata", saveData)
                 .build().execute(new StringCallback() {
+
             @Override
             public void onError(Call call, Exception e, int id) {
                 Log.e(TAG,"save data err result:"+e);

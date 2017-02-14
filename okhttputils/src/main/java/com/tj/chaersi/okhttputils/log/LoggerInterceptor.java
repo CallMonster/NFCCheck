@@ -45,7 +45,7 @@ public class LoggerInterceptor implements Interceptor {
     private Response logForResponse(Response response) {
         try {
             //===>response log
-            Log.e(tag, "========response'log=======");
+            Log.d(tag, "========response'log=======");
             Response.Builder builder = response.newBuilder();
             Response clone = builder.build();
             Log.e(tag, "url : " + clone.request().url());

@@ -253,7 +253,7 @@ public class SmartCheck_NFCActivity extends BaseActivity {
                     Intent detailIntent=new Intent(this,CheckPointDetailActivity.class);
                     Bundle mBundle=new Bundle();
                     mBundle.putString("name",item.getName());
-                    mBundle.putString("routeId",item.getId());
+                    mBundle.putString("routeId",checkid);
                     mBundle.putString("userId",BaseApplication.instance.user_id);
                     mBundle.putString("userName",preference.getUserInfo().getRealname());
                     mBundle.putString("planTime",planTime);
